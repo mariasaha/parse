@@ -26,13 +26,16 @@ void main() async {
           itemCount: _data.length,
           padding: const EdgeInsets.all(14.5),
           itemBuilder: (BuildContext context, int position) {
+            if (position.isOdd) return new Divider();
+            //divide position by 2 to return an integer result.
+              final index = position ~/2;
             return new Column(
               children: <Widget>[
                 new Divider(height:5.5),
                 new ListTile(
-                  title: Text("${_data[position]['title']}",
+                  title: Text("${_data[index]['title']}",
                   style: new TextStyle(fontSize: 17.9),),
-                    subtitle: Text("${_data[position]['body']}",
+                    subtitle: Text("${_data[index]['body']}",
                       style: new TextStyle(fontSize: 14.9,
                       color: Colors.grey,
                       fontStyle: FontStyle.italic)),
@@ -45,7 +48,8 @@ void main() async {
                     ),
                   ),
                   //onTap: () => print("${_data[position]['id']}"),
-                  onTap:() => _showonTapMessage(context, _data[position]['body']),
+                  //onTap:() => _showonTapMessage(context, _data[position]['body']),
+                  onTap: ()=> debugPrint("$index"),
                 )
               ],
             );
@@ -56,7 +60,7 @@ void main() async {
   ));
 }
 
-void _showonTapMessage(BuildContext context, String message) {
+void _shownnTapMessage(BuildContext context, String message) {
   var alert = new AlertDialog(
     title: Text("My App"),
     content: Text(message),
