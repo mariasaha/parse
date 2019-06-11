@@ -48,10 +48,10 @@ void main() async {
                     ),
                   ),
                   //onTap: () => print("${_data[position]['id']}"),
-                  //onTap:() => _showonTapMessage(context, _data[position]['body']),
-                  onTap: ()=> debugPrint("$index"),
+                  onTap:(){ _showOnTapMessage(context, "${_data[index]['title']}");}
+                  //onTap: ()=> debugPrint("$index"),
                 )
-              ],
+              ]
             );
           },
         )
@@ -60,7 +60,7 @@ void main() async {
   ));
 }
 
-void _shownnTapMessage(BuildContext context, String message) {
+void _showOnTapMessage(BuildContext context, String message) {
   var alert = new AlertDialog(
     title: Text("My App"),
     content: Text(message),
